@@ -2,8 +2,9 @@
 
 Does [webframe](https://github.com/tractordev/webframe) make an AI agent's
 verification loop (edit code, load it in a browser, check console/exceptions/DOM,
-feed the result back) faster than [Playwright](https://playwright.dev)? This repo
-measures it. The specification is in [`Spec.md`](Spec.md); the findings are in
+feed the result back) faster than [Playwright](https://playwright.dev)? 
+
+The findings are in
 [`REPORT.md`](REPORT.md), which is generated from the raw data by script.
 
 **Quick view of the results:** the *Scoreboard* at the top of `REPORT.md` lists the
@@ -110,7 +111,6 @@ On Linux the runner adds `wf-cli-display` (webframe under a pre-started shared
 ## Layout
 
 ```
-Spec.md                  the benchmark specification
 REPORT.md                generated findings
 Makefile                 entry points and knobs
 Dockerfile               Ubuntu 24.04 stages: base, webframe-stack, playwright-stack, bench
