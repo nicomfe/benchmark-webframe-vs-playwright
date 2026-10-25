@@ -25,10 +25,8 @@ Prerequisites:
 | WebKitGTK 4.1 + Xvfb | webframe runtime on Linux only | - | `apt install libwebkit2gtk-4.1-0 xvfb` |
 | Docker (optional) | reproducible Linux run + install footprint | Docker Desktop | docker.io |
 
-Then:
 
 ```sh
-git clone <this repo> && cd headless-benchmark
 make bench            # setup + capability probes + benchmark + REPORT.md (about 20 minutes with defaults)
 ```
 
