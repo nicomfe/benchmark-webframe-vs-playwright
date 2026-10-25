@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="260" viewBox="0 0 860 260" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+<rect width="860" height="260" fill="#fff"/>
+<text x="12" y="24" font-size="16" font-weight="600">S7 loop: 20 x (edit + verify) total wall time, median [linux-arm64-docker]</text>
+<text x="222" y="58" text-anchor="end" fill="#222">wf-cli</text>
+<rect x="230" y="44" width="179.8" height="20" rx="3" fill="#2a9d8f"/>
+<text x="415.8" y="58" fill="#333">5.4 s  (min 5,240 ms, max 5,822 ms)</text>
+<text x="222" y="86" text-anchor="end" fill="#222">wf-cli-display</text>
+<rect x="230" y="72" width="170.6" height="20" rx="3" fill="#2a9d8f"/>
+<text x="406.6" y="86" fill="#333">5.1 s  (min 4,631 ms, max 5,346 ms)</text>
+<text x="222" y="114" text-anchor="end" fill="#222">wf-repl</text>
+<rect x="230" y="100" width="7.8" height="20" rx="3" fill="#1d6f5f"/>
+<text x="243.8" y="114" fill="#333">0.2 s  (min 179 ms, max 294 ms)</text>
+<text x="222" y="142" text-anchor="end" fill="#222">pw-chromium-cold</text>
+<rect x="230" y="128" width="273.9" height="20" rx="3" fill="#e76f51"/>
+<text x="509.9" y="142" fill="#333">8.2 s  (min 7,525 ms, max 9,215 ms)</text>
+<text x="222" y="170" text-anchor="end" fill="#222">pw-chromium-warm</text>
+<rect x="230" y="156" width="32.9" height="20" rx="3" fill="#f4a261"/>
+<text x="268.9" y="170" fill="#333">1.0 s  (min 960 ms, max 1,241 ms)</text>
+<text x="222" y="198" text-anchor="end" fill="#222">pw-webkit-cold</text>
+<rect x="230" y="184" width="380.0" height="20" rx="3" fill="#6d597a"/>
+<text x="616.0" y="198" fill="#333">11.3 s  (min 10.3 s, max 11.7 s)</text>
+<text x="222" y="226" text-anchor="end" fill="#222">pw-webkit-warm</text>
+<rect x="230" y="212" width="112.2" height="20" rx="3" fill="#b56576"/>
+<text x="348.2" y="226" fill="#333">3.3 s  (min 3,175 ms, max 4,425 ms)</text>
+</svg>

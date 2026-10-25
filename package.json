@@ -1,0 +1,17 @@
+{
+  "name": "headless-benchmark",
+  "version": "1.0.0",
+  "description": "Benchmark: webframe vs Playwright for AI-agent verification loops",
+  "license": "MIT",
+  "author": "Nicolas Fetter <hi@nicofetter.com> (http://nicofetter.com/)",
+  "type": "commonjs",
+  "private": true,
+  "scripts": {
+    "setup": "bash bench/setup.sh",
+    "bench": "make bench",
+    "summary": "python3 bench/summarize.py"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1"
+  }
+}

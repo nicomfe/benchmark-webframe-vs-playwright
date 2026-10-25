@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="248" viewBox="0 0 860 248" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+<rect width="860" height="248" fill="#fff"/>
+<text x="12" y="24" font-size="16" font-weight="600">Cold start vs warm per-check: S2 median wall time [macos-arm64]</text>
+<text x="12" y="44" fill="#666" font-size="12">cold = fresh process per check; warm = browser already running, new page per check</text>
+<text x="222" y="74" text-anchor="end" fill="#222">wf-cli</text>
+<rect x="230" y="60" width="171.9" height="20" rx="3" fill="#2a9d8f"/>
+<text x="407.9" y="74" fill="#333">330 ms  (p95 349 ms, 0 fail)</text>
+<text x="222" y="102" text-anchor="end" fill="#222">wf-repl</text>
+<rect x="230" y="88" width="3.4" height="20" rx="3" fill="#1d6f5f"/>
+<text x="239.4" y="102" fill="#333">6.5 ms  (p95 9.5 ms, 0 fail)</text>
+<text x="222" y="130" text-anchor="end" fill="#222">pw-chromium-cold</text>
+<rect x="230" y="116" width="181.3" height="20" rx="3" fill="#e76f51"/>
+<text x="417.3" y="130" fill="#333">348 ms  (p95 425 ms, 0 fail)</text>
+<text x="222" y="158" text-anchor="end" fill="#222">pw-chromium-warm</text>
+<rect x="230" y="144" width="23.0" height="20" rx="3" fill="#f4a261"/>
+<text x="259.0" y="158" fill="#333">44.0 ms  (p95 55.7 ms, 0 fail)</text>
+<text x="222" y="186" text-anchor="end" fill="#222">pw-webkit-cold</text>
+<rect x="230" y="172" width="380.0" height="20" rx="3" fill="#6d597a"/>
+<text x="616.0" y="186" fill="#333">729 ms  (p95 766 ms, 0 fail)</text>
+<text x="222" y="214" text-anchor="end" fill="#222">pw-webkit-warm</text>
+<rect x="230" y="200" width="92.8" height="20" rx="3" fill="#b56576"/>
+<text x="328.8" y="214" fill="#333">178 ms  (p95 195 ms, 0 fail)</text>
+</svg>

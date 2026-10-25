@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="276" viewBox="0 0 860 276" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+<rect width="860" height="276" fill="#fff"/>
+<text x="12" y="24" font-size="16" font-weight="600">Peak memory per check: S4 process-tree RSS, median [linux-arm64-docker]</text>
+<text x="12" y="44" fill="#666" font-size="12">sum of RSS over the tool&#x27;s process tree incl. webview/browser helpers, sampled every 100 ms</text>
+<text x="222" y="74" text-anchor="end" fill="#222">wf-cli</text>
+<rect x="230" y="60" width="296.1" height="20" rx="3" fill="#2a9d8f"/>
+<text x="532.1" y="74" fill="#333">377 MB  (max 439 MB)</text>
+<text x="222" y="102" text-anchor="end" fill="#222">wf-cli-display</text>
+<rect x="230" y="88" width="221.4" height="20" rx="3" fill="#2a9d8f"/>
+<text x="457.4" y="102" fill="#333">282 MB  (max 370 MB)</text>
+<text x="222" y="130" text-anchor="end" fill="#222">wf-repl</text>
+<rect x="230" y="116" width="358.5" height="20" rx="3" fill="#1d6f5f"/>
+<text x="594.5" y="130" fill="#333">457 MB  (max 458 MB)</text>
+<text x="222" y="158" text-anchor="end" fill="#222">pw-chromium-cold</text>
+<rect x="230" y="144" width="348.0" height="20" rx="3" fill="#e76f51"/>
+<text x="584.0" y="158" fill="#333">443 MB  (max 504 MB)</text>
+<text x="222" y="186" text-anchor="end" fill="#222">pw-chromium-warm</text>
+<rect x="230" y="172" width="364.6" height="20" rx="3" fill="#f4a261"/>
+<text x="600.6" y="186" fill="#333">464 MB  (max 518 MB)</text>
+<text x="222" y="214" text-anchor="end" fill="#222">pw-webkit-cold</text>
+<rect x="230" y="200" width="380.0" height="20" rx="3" fill="#6d597a"/>
+<text x="616.0" y="214" fill="#333">484 MB  (max 559 MB)</text>
+<text x="222" y="242" text-anchor="end" fill="#222">pw-webkit-warm</text>
+<rect x="230" y="228" width="360.9" height="20" rx="3" fill="#b56576"/>
+<text x="596.9" y="242" fill="#333">460 MB  (max 552 MB)</text>
+</svg>

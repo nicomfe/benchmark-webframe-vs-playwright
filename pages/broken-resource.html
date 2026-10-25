@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>broken-resource</title></head>
+<body>
+<p>This page references an image and a script that do not exist (404).</p>
+<img src="/missing.png" alt="missing image">
+<script src="/missing.js"></script>
+<script>
+// load fires once every subresource has either loaded or failed.
+window.addEventListener("load", () => setTimeout(() => console.log("READY"), 50));
+</script>
+</body>
+</html>

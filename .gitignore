@@ -1,0 +1,8 @@
+node_modules/
+.cache/
+pages/_scratch/
+results/raw/_check/
+results/raw/smoke/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,7 @@
+.cache
+node_modules
+results
+pages/_scratch
+.git
+*.md
+!README.md

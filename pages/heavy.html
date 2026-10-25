@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>heavy</title></head>
+<body>
+<script>
+// CPU-bound JavaScript, adapted from webframe's examples/bench.html but
+// shortened so a single run takes a few hundred milliseconds. Prints
+// "TIME <ms>" (median of RUNS timed passes after WARMUP passes).
+(function () {
+  let sink = 0;
+  const tests = [
+    function fib() { function f(n) { return n < 2 ? n : f(n - 1) + f(n - 2); } sink += f(29); },
+    function mathLoop() { let x = 0; for (let i = 1; i < 2000000; i++) x += Math.sqrt(i) * Math.sin(i); sink += x; },
+    function sort() {
+      let seed = 42;
+      const rand = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
+      const arr = Array.from({ length: 200000 }, rand);
+      arr.sort((a, b) => a - b);
+      sink += arr[0];
+    },
+    function alloc() { const l = []; for (let i = 0; i < 300000; i++) l.push({ id: i, name: "item" + i, v: i * 1.5 }); sink += l.length; },
+    function json() {
+      const data = Array.from({ length: 20000 }, (_, i) => ({ id: i, tags: ["a", "b"], n: { x: i, y: [i, i + 1] } }));
+      const s = JSON.stringify(data);
+      sink += JSON.parse(s).length + s.length;
+    },
+  ];
+  const WARMUP = 1, RUNS = 3;
+  const times = [];
+  for (let r = 0; r < WARMUP + RUNS; r++) {
+    const t0 = performance.now();
+    for (const t of tests) t();
+    const dt = performance.now() - t0;
+    if (r >= WARMUP) times.push(dt);
+  }
+  times.sort((a, b) => a - b);
+  const median = times[times.length >> 1];
+  console.log("ENGINE " + navigator.userAgent);
+  console.log("TIME " + median.toFixed(1));
+  if (sink === 42) console.log("");
+})();
+</script>
+</body>
+</html>

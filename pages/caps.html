@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>caps</title></head>
+<body>
+<!-- Used by bench/capabilities.py to probe input, waiting and interception. -->
+<button id="btn">click me</button>
+<span id="count">0</span>
+<input id="inp" placeholder="type here">
+<span id="typed"></span>
+<span id="trusted"></span>
+<div id="late-host"></div>
+<script>
+  let n = 0;
+  document.getElementById("btn").addEventListener("click", (e) => {
+    n++;
+    document.getElementById("count").textContent = String(n);
+    document.getElementById("trusted").textContent = e.isTrusted ? "trusted" : "synthetic";
+  });
+  document.getElementById("inp").addEventListener("input", (e) => {
+    document.getElementById("typed").textContent = e.target.value;
+  });
+  // An element that appears only after 300 ms, for "wait for selector".
+  setTimeout(() => {
+    const el = document.createElement("p");
+    el.id = "late";
+    el.textContent = "late element";
+    document.getElementById("late-host").appendChild(el);
+  }, 300);
+  window.addEventListener("load", () => console.log("READY"));
+</script>
+</body>
+</html>

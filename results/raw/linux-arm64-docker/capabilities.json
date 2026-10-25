@@ -1,0 +1,329 @@
+{
+ "label": "linux-arm64-docker",
+ "ts": "2026-10-25T17:40:40+0000",
+ "capabilities": [
+  [
+   "console",
+   "Capture console output"
+  ],
+  [
+   "uncaught_exception",
+   "Detect uncaught exceptions"
+  ],
+  [
+   "unhandled_rejection",
+   "Detect unhandled rejections"
+  ],
+  [
+   "failed_resource",
+   "Detect failed resource loads"
+  ],
+  [
+   "eval",
+   "Evaluate JS in page and get result"
+  ],
+  [
+   "screenshot",
+   "Screenshot"
+  ],
+  [
+   "input",
+   "Click / type / keyboard input"
+  ],
+  [
+   "wait",
+   "Wait for selector or network idle"
+  ],
+  [
+   "intercept",
+   "Network request interception"
+  ],
+  [
+   "multi_page",
+   "Multiple pages or tabs"
+  ],
+  [
+   "structured_output",
+   "Structured (JSON) output"
+  ],
+  [
+   "exit_code",
+   "Exit code on failure"
+  ]
+ ],
+ "webframe": {
+  "console": {
+   "status": "Yes",
+   "note": "console.log -> stdout, other levels prefixed [warn]/[error]",
+   "evidence": [
+    "READY",
+    "1"
+   ]
+  },
+  "uncaught_exception": {
+   "status": "Yes",
+   "note": "stderr message + stack; -e exits 1",
+   "evidence": [
+    "Uncaught Error: boom: intentional uncaught exception",
+    "    level2@http://127.0.0.1:38873/broken-throw.html:12:36",
+    "    level1@http://127.0.0.1:38873/broken-throw.html:13:27"
+   ]
+  },
+  "unhandled_rejection": {
+   "status": "Yes",
+   "note": "stderr 'Unhandled promise rejection: ...'; -e exits 1",
+   "evidence": [
+    "Unhandled promise rejection: TypeError: nope: intentional unhandled rejection",
+    "    @http://127.0.0.1:38873/broken-rejection.html:9:31"
+   ]
+  },
+  "failed_resource": {
+   "status": "Yes",
+   "note": "stderr 'Failed to load resource: <tag> url'",
+   "evidence": [
+    "Failed to load resource: <img> http://127.0.0.1:38873/missing.png",
+    "Failed to load resource: <script> http://127.0.0.1:38873/missing.js"
+   ]
+  },
+  "eval": {
+   "status": "Yes",
+   "note": "-c: each stdin line evaluated, result printed (promises awaited)",
+   "evidence": [
+    "100"
+   ]
+  },
+  "screenshot": {
+   "status": "Workaround",
+   "note": "no screenshot API; DOM snapshot via eval (outerHTML/getBoundingClientRect), no pixels, ~1 eval round trip",
+   "evidence": [
+    "2078"
+   ]
+  },
+  "input": {
+   "status": "Workaround",
+   "note": "no input API; synthetic DOM events via eval (el.click(), dispatchEvent). isTrusted=false, no real keyboard/mouse, no focus/IME semantics",
+   "evidence": [
+    "\"1|hello|synthetic\""
+   ]
+  },
+  "wait": {
+   "status": "Workaround",
+   "note": "no wait API; eval a polling Promise (webframe awaits promises). Network idle: not available (no network events exposed)",
+   "evidence": [
+    "\"late after 10ms (since eval)\""
+   ]
+  },
+  "intercept": {
+   "status": "No",
+   "note": "no request/route API; WF_* env vars inject string globals before scripts run but cannot alter requests; patching fetch via eval is too late for initial loads",
+   "evidence": [
+    "\"function\"",
+    "25"
+   ]
+  },
+  "multi_page": {
+   "status": "Workaround",
+   "note": "one webview per process; run N processes (N x startup cost, no shared session)",
+   "evidence": [
+    [
+     "\"ok\""
+    ],
+    [
+     "\"spa\""
+    ]
+   ]
+  },
+  "structured_output": {
+   "status": "Workaround",
+   "note": "objects print as JSON (eval results and console.log args), but stdout/stderr are plain line streams: no envelope separating page output, eval results and errors; caller must parse/mark lines",
+   "evidence": [
+    {
+     "li": 100,
+     "title": "ok"
+    },
+    {
+     "a": 1
+    }
+   ]
+  },
+  "exit_code": {
+   "status": "Yes",
+   "note": "-e: exit 1 on first exception (got 1); exit 2 on bad usage",
+   "evidence": 1
+  }
+ },
+ "playwright": {
+  "chromium": {
+   "console": {
+    "status": "Yes",
+    "note": "page.on('console')",
+    "evidence": [
+     "READY"
+    ]
+   },
+   "uncaught_exception": {
+    "status": "Yes",
+    "note": "page.on('pageerror') with message and stack",
+    "evidence": [
+     "boom: intentional uncaught exception"
+    ]
+   },
+   "unhandled_rejection": {
+    "status": "Yes",
+    "note": "page.on('pageerror')",
+    "evidence": [
+     "nope: intentional unhandled rejection"
+    ]
+   },
+   "failed_resource": {
+    "status": "Yes",
+    "note": "page.on('response') status>=400 and page.on('requestfailed'); both img and script reported with URL",
+    "evidence": [
+     "404 http://127.0.0.1:38873/missing.png",
+     "404 http://127.0.0.1:38873/missing.js",
+     "failed http://127.0.0.1:38873/missing.js"
+    ]
+   },
+   "eval": {
+    "status": "Yes",
+    "note": "page.evaluate(), structured return value",
+    "evidence": 100
+   },
+   "screenshot": {
+    "status": "Yes",
+    "note": "page.screenshot() -> 32146 bytes PNG in 47 ms",
+    "evidence": 32146
+   },
+   "input": {
+    "status": "Yes",
+    "note": "page.click/fill/keyboard; events are trusted",
+    "evidence": {
+     "count": "1",
+     "typed": "hello",
+     "trusted": "trusted"
+    }
+   },
+   "wait": {
+    "status": "Yes",
+    "note": "page.waitForSelector (#late appeared after 318 ms), goto waitUntil 'networkidle'",
+    "evidence": 318
+   },
+   "intercept": {
+    "status": "Yes",
+    "note": "page.route() fulfilled /api/items.json with 2 mocked items",
+    "evidence": 2
+   },
+   "multi_page": {
+    "status": "Yes",
+    "note": "browser.newPage() x2 in one browser, concurrently",
+    "evidence": [
+     "ok",
+     "spa"
+    ]
+   },
+   "structured_output": {
+    "status": "Yes",
+    "note": "library call; the script emits whatever JSON it wants (eval returns structured values)",
+    "evidence": {
+     "ok": true,
+     "value": {
+      "li": 100,
+      "title": "ok"
+     },
+     "errors": []
+    }
+   },
+   "exit_code": {
+    "status": "Yes",
+    "note": "script decides: process.exit(1) on pageerror (tested by pw_caps.js itself)",
+    "evidence": true
+   }
+  },
+  "webkit": {
+   "console": {
+    "status": "Yes",
+    "note": "page.on('console')",
+    "evidence": [
+     "READY"
+    ]
+   },
+   "uncaught_exception": {
+    "status": "Yes",
+    "note": "page.on('pageerror') with message and stack",
+    "evidence": [
+     "boom: intentional uncaught exception"
+    ]
+   },
+   "unhandled_rejection": {
+    "status": "Yes",
+    "note": "page.on('pageerror')",
+    "evidence": [
+     "TypeError: nope: intentional unhandled rejection"
+    ]
+   },
+   "failed_resource": {
+    "status": "Yes",
+    "note": "page.on('response') status>=400 and page.on('requestfailed'); both img and script reported with URL",
+    "evidence": [
+     "404 http://127.0.0.1:38873/missing.png",
+     "404 http://127.0.0.1:38873/missing.js",
+     "failed http://127.0.0.1:38873/missing.js"
+    ]
+   },
+   "eval": {
+    "status": "Yes",
+    "note": "page.evaluate(), structured return value",
+    "evidence": 100
+   },
+   "screenshot": {
+    "status": "Yes",
+    "note": "page.screenshot() -> 35449 bytes PNG in 41 ms",
+    "evidence": 35449
+   },
+   "input": {
+    "status": "Yes",
+    "note": "page.click/fill/keyboard; events are trusted",
+    "evidence": {
+     "count": "1",
+     "typed": "hello",
+     "trusted": "trusted"
+    }
+   },
+   "wait": {
+    "status": "Yes",
+    "note": "page.waitForSelector (#late appeared after 330 ms), goto waitUntil 'networkidle'",
+    "evidence": 330
+   },
+   "intercept": {
+    "status": "Yes",
+    "note": "page.route() fulfilled /api/items.json with 2 mocked items",
+    "evidence": 2
+   },
+   "multi_page": {
+    "status": "Yes",
+    "note": "browser.newPage() x2 in one browser, concurrently",
+    "evidence": [
+     "ok",
+     "spa"
+    ]
+   },
+   "structured_output": {
+    "status": "Yes",
+    "note": "library call; the script emits whatever JSON it wants (eval returns structured values)",
+    "evidence": {
+     "ok": true,
+     "value": {
+      "li": 100,
+      "title": "ok"
+     },
+     "errors": []
+    }
+   },
+   "exit_code": {
+    "status": "Yes",
+    "note": "script decides: process.exit(1) on pageerror (tested by pw_caps.js itself)",
+    "evidence": true
+   }
+  }
+ }
+}

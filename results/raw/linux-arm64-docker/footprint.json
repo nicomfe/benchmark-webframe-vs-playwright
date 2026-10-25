@@ -1,0 +1,26 @@
+{
+ "basis": "Linux (arm64) Docker, ubuntu:24.04 base with Node v22.23.4; dpkg installed-size deltas vs base + binaries/downloads",
+ "arch": "arm64",
+ "image_base_bytes": 346392297,
+ "image_webframe_bytes": 882720203,
+ "image_playwright_bytes": 2083733940,
+ "image_bench_bytes": 2222457882,
+ "webframe_binary_bytes": 4980999,
+ "webframe_deps_bytes": 562216960,
+ "webframe_stack_bytes": 567197959,
+ "webframe_apt_packages": "libgtk-3-0t64 3.24.41-4ubuntu1.3 11060;libjavascriptcoregtk-4.1-0 2.52.6-0ubuntu0.24.04.1 30504;libwebkit2gtk-4.1-0 2.52.6-0ubuntu0.24.04.1 97216;xvfb 2:21.1.12-1ubuntu1.9 2272;",
+ "playwright_version": "1.64.1",
+ "playwright_npm_bytes": 18690124,
+ "node_modules_total_bytes": 18691225,
+ "playwright_browsers_bytes": {"chromium-1248": 418439600,"chromium_headless_shell-1248": 288373077,"ffmpeg-1013": 3986358,"webkit-2370": 289970430},
+ "playwright_deps_bytes": 749963264,
+ "playwright_stack_bytes": 1769422853,
+ "install_time_webframe_s": 30.8,
+ "install_time_playwright_s": 66.2,
+ "notes": [
+  "Image deltas vs base: webframe-stack +511 MB, playwright-stack +1656 MB, both (bench) +1789 MB.",
+  "Install times are wall-clock from a fresh base container including network downloads (apt mirrors / npm / Playwright CDN); they vary with bandwidth.",
+  "The webframe install time covers apt + fetching the source tarball; compiling with Go is excluded because upstream ships release zips, but the Go toolchain (~250 MB) would be needed to build from source.",
+  "Playwright stack counts chromium + chromium headless shell + webkit + ffmpeg downloads plus the apt packages pulled by --with-deps for those engines."
+ ]
+}

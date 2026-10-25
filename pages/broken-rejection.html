@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>broken-rejection</title></head>
+<body>
+<p>This page causes an unhandled promise rejection after load.</p>
+<script>
+window.addEventListener("load", () => setTimeout(() => console.log("READY"), 50));
+window.addEventListener("load", () => {
+  Promise.reject(new TypeError("nope: intentional unhandled rejection"));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="232" viewBox="0 0 860 232" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+<rect width="860" height="232" fill="#fff"/>
+<text x="12" y="24" font-size="16" font-weight="600">Install footprint on disk [macos-arm64]</text>
+<text x="222" y="58" text-anchor="end" fill="#222">webframe binary</text>
+<rect x="230" y="44" width="5.1" height="20" rx="3" fill="#888"/>
+<text x="241.1" y="58" fill="#333">4.9 MB</text>
+<text x="222" y="86" text-anchor="end" fill="#222">playwright npm packages</text>
+<rect x="230" y="72" width="18.6" height="20" rx="3" fill="#888"/>
+<text x="254.6" y="86" fill="#333">17.8 MB</text>
+<text x="222" y="114" text-anchor="end" fill="#222">browser download: chromium-1248</text>
+<rect x="230" y="100" width="380.0" height="20" rx="3" fill="#888"/>
+<text x="616.0" y="114" fill="#333">365 MB</text>
+<text x="222" y="142" text-anchor="end" fill="#222">browser download: chromium_headless_shell-1248</text>
+<rect x="230" y="128" width="211.5" height="20" rx="3" fill="#888"/>
+<text x="447.5" y="142" fill="#333">203 MB</text>
+<text x="222" y="170" text-anchor="end" fill="#222">browser download: ffmpeg-1013</text>
+<rect x="230" y="156" width="3.0" height="20" rx="3" fill="#888"/>
+<text x="239.0" y="170" fill="#333">2.9 MB</text>
+<text x="222" y="198" text-anchor="end" fill="#222">browser download: webkit-2370</text>
+<rect x="230" y="184" width="297.4" height="20" rx="3" fill="#888"/>
+<text x="533.4" y="198" fill="#333">286 MB</text>
+</svg>

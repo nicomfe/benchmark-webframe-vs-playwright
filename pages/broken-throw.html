@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>broken-throw</title></head>
+<body>
+<p>This page throws an uncaught exception after load.</p>
+<script>
+// READY is logged after the exception so a verifier that waits for READY
+// has had the chance to observe the failure.
+window.addEventListener("load", () => setTimeout(() => console.log("READY"), 50));
+</script>
+<script>
+function level2() { throw new Error("boom: intentional uncaught exception"); }
+function level1() { level2(); }
+window.addEventListener("load", level1);
+</script>
+</body>
+</html>
